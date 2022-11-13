@@ -1,22 +1,54 @@
 .catalog {
-  display: flex;
-  flex-wrap: wrap;
-
-  max-width: 944px;
+  display: grid;
+  gap: $gap;
+  justify-content: center;
+  align-content: center;
   margin: 0 auto;
 
   &__card {
-    display: flex;
+    display: grid;
     justify-content: center;
     align-items: center;
     width: 200px;
     height: 300px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    margin-bottom: 48px;
   }
 
   &__card:not(:nth-child(4n)) {
-    margin-right: 48px;
+    // margin-right: 48px;
+  }
+}
+
+@media (min-width: 488px) {
+  .catalog {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    width: getCatalogWidth($cardWidth, 2);
+
+    grid-template-areas: "card card"
+      "card card";
+  }
+}
+
+@media (min-width: 768px) {
+  .catalog {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    width: getCatalogWidth($cardWidth, 3);
+
+    grid-template-areas: "card card card"
+      "card card card";
+  }
+}
+
+@media (min-width: 1024px) {
+  .catalog {
+    grid-template-columns: 1fr 1fr 1fr 1fr ;
+    grid-template-rows: 1fr 1fr;
+    width: getCatalogWidth($cardWidth, 4);
+
+    grid-template-areas: "card card card card"
+      "card card card card";
   }
 }
