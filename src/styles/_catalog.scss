@@ -21,13 +21,11 @@
       color: $color-grey;
     }
   }
-}
 
-$min-width: 448px 2, 768px 3, 1024px 4;
+  $min-width: 448px 2, 768px 3, 1024px 4;
 
-@each $width, $n in $min-width {
-  @media (min-width: $width) {
-    .catalog {
+  @each $width, $n in $min-width {
+    @media (min-width: $width) {
       grid-template-columns: repeat($n, 1fr);
       width: getCatalogWidth($cardWidth, $n);
     }
