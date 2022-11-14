@@ -23,35 +23,13 @@
   }
 }
 
-@media (min-width: 488px) {
-  .catalog {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    width: getCatalogWidth($cardWidth, 2);
+$min-width: 448px 2, 768px 3, 1024px 4;
 
-    grid-template-areas: "card card"
-      "card card";
-  }
-}
-
-@media (min-width: 768px) {
-  .catalog {
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    width: getCatalogWidth($cardWidth, 3);
-
-    grid-template-areas: "card card card"
-      "card card card";
-  }
-}
-
-@media (min-width: 1024px) {
-  .catalog {
-    grid-template-columns: 1fr 1fr 1fr 1fr ;
-    grid-template-rows: 1fr 1fr;
-    width: getCatalogWidth($cardWidth, 4);
-
-    grid-template-areas: "card card card card"
-      "card card card card";
+@each $width, $n in $min-width {
+  @media (min-width: $width) {
+    .catalog {
+      grid-template-columns: repeat($n, 1fr);
+      width: getCatalogWidth($cardWidth, $n);
+    }
   }
 }
